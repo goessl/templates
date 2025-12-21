@@ -35,13 +35,11 @@ plugins:
       handlers:
         python:
           options:
-            heading_level: 3
             members_order: source
             show_root_toc_entry: false
             show_symbol_type_heading: true
             group_by_category: false
             docstring_style: numpy
-  - same-dir
 
 extra:
   social:
@@ -65,7 +63,6 @@ extra_javascript:
   - mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
-docs_dir: .
-exclude_docs: README.md
 nav:
-  - index.md
+  - Home: index.md
+  - {{module}}.md

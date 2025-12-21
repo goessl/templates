@@ -25,13 +25,42 @@ cd templates
   python -m copier copy extension YOUR_PROJECT_NAME
   ```
 
-And then follow the appearing quastionaire. Done!
+- For a **package**:
+  ```console
+  python -m copier copy package YOUR_PROJECT_NAME
+  ```
+
+And then follow the appearing quastionnaire. Done!
+
+## Design references
+
+### `pyproject.toml`
+
+[Python Packaging User Guide - Writing your pyproject.toml](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#a-full-example)
+filtered and more ordered like [Python Packaging User Guide - pyproject.toml specification](https://packaging.python.org/en/latest/specifications/pyproject-toml/).
+For extensions/setuptools [setuptools documentation - Configuring setuptools using pyproject.toml files](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html).
+
+### `mkdocs.yml`
+
+Derived from [squidfunk/mkdocs-material - mkdocs.yml](https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml).
+
+### `LICENSE.txt`
+
+[Choose a License - MIT License](https://choosealicense.com/licenses/mit/)
+
+### `.gitignore`
+
+[github/gitignore - Python.gitignore](https://github.com/github/gitignore/blob/main/Python.gitignore)
+
+### `extension`
+
+[python/cpython - Modules/xxlimited.c](https://github.com/python/cpython/blob/main/Modules/xxlimited.c) linked from [Python 3 documentation - Extending Python with C or C++](https://docs.python.org/3/extending/extending.html#the-module-s-method-table-and-initialization-function).
 
 ## Roadmap
 
 - [x] Deploy
-- [ ] Package template
-- [ ] References
+- [x] References
+- [ ] Update extension C source
 - [ ] Web interface
 - [x] Ballin
 

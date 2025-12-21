@@ -1,0 +1,42 @@
+description:
+    type: str
+    help: Describe your module?
+
+module:
+    type: str
+    help: What is your module name?
+
+user_name:
+    type: str
+    default: Sebastian Gössl
+    help: What is your full name?
+
+github_user:
+    type: str
+    default: goessl
+    help: What is your GitHub name?
+
+instagram_name:
+    type: str
+    default: lordgoessl
+    help: What is your Instagram name?
+
+user_email:
+    type: str
+    default: goessl@student.tugraz.at
+    help: What is your email address?
+
+mkdocs:
+    type: bool
+    default: yes
+    help: Use MkDocs documentation?
+
+year:
+    type: str
+    default: 2026
+    help: What year do we currently have?
+
+direct_dependencies:
+    type: bool
+    default: no
+    help: Does your module have direct dependencies (GitHub link)?
