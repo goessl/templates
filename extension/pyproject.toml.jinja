@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
 {% if direct_dependencies %}
 [tool.hatch.metadata]
 allow-direct-references = true
@@ -43,14 +43,10 @@ Repository = "https://github.com/{{github_user}}/{{_folder_name}}.git"
 [project.optional-dependencies]
 test = ["pytest"]
 
-[tool.hatch.build.targets.wheel]
-include = ["{{_folder_name}}.py", "LICENSE", "README.md"]
+[tool.setuptools]
+packages = ["{{_folder_name}}"]
 
-[tool.hatch.build.targets.sdist]{% if mkdocs %}
-include = ["{{_folder_name}}.py", "test_{{_folder_name}}.py",
-  "mkdocs.yml", "index.md", "mathjax.js",
-  "pyproject.toml", "README.md", "LICENSE"]
-{% else %}
-include = ["{{_folder_name}}.py", "test_{{_folder_name}}.py",
-  "pyproject.toml", "README.md", "LICENSE"]
-{% endif %}
+[[tool.setuptools.ext-modules]]
+name = "{{_folder_name}}._{{_folder_name}}"
+sources = ["{{_folder_name}}/_{{_folder_name}}module.c"]
+py-limited-api = true

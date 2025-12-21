@@ -1,43 +1,36 @@
-# templates
+---
+hide:
+  - navigation
+---
 
-Python project templates for quick and reliable setups.
+# {{_folder_name}}
+
+{{description}}
+```python
+>>> from {{_folder_name}} import foo
+>>> foo(2, 3)
+5
+```
 
 ## Installation
 
 ```console
-pip install copier
-git clone https://github.com/goessl/templates.git
+pip install git+https://github.com/{{github_user}}/{{_folder_name}}.git
 ```
 
 ## Usage
 
-```console
-cd templates
-```
-
-- For a **module** (single Python file package):
-  ```console
-  python -m copier copy module YOUR_PROJECT_NAME
-  ```
-
-- For a **C extension**:
-  ```console
-  python -m copier copy extension YOUR_PROJECT_NAME
-  ```
-
-And then follow the appearing quastionaire. Done!
+::: {{_folder_name}}
 
 ## Roadmap
 
 - [x] Deploy
-- [ ] Package template
-- [ ] References
-- [ ] Web interface
+- [ ] Production
 - [x] Ballin
 
 ## License (MIT)
 
-Copyright (c) 2025 Sebastian Gössl
+Copyright (c) {{year}} {{user_name}}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

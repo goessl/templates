@@ -1,0 +1,72 @@
+site_name: {{_folder_name}}
+site_url: https://{{github_user}}.github.io/{{_folder_name}}/
+site_author: {{user_name}}
+site_description: {{description}}
+
+repo_name: {{github_user}}/{{_folder_name}}
+repo_url: https://github.com/{{github_user}}/{{_folder_name}}
+
+copyright: Copyright &copy; {{year}} {{user_name}}
+
+theme:
+  name: material
+  features:
+    - navigation.footer
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to system preference
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            heading_level: 3
+            members_order: source
+            show_labels: false
+            show_root_toc_entry: false
+            show_symbol_type_heading: true
+            group_by_category: false
+            docstring_style: numpy
+  - same-dir
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/{{github_user}}/
+      name: {{github_user}} on Github
+{% if instagram_name %}    - icon: fontawesome/brands/instagram
+      link: https://instagram.com/{{instagram_name}}/
+      name: {{instagram_name}} on Instagram
+{% endif %}
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_javascript:
+  - mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+docs_dir: .
+exclude_docs: README.md
+nav:
+  - index.md
