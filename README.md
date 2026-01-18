@@ -54,19 +54,27 @@ Derived from [squidfunk/mkdocs-material - mkdocs.yml](https://github.com/squidfu
 
 ### `extension`
 
-[python/cpython - Modules/xxlimited.c](https://github.com/python/cpython/blob/main/Modules/xxlimited.c) linked from [Python 3 documentation - Extending Python with C or C++](https://docs.python.org/3/extending/extending.html#the-module-s-method-table-and-initialization-function).
+Documentation
+
+- [Python 3 documentation - Extending Python with C or C++](https://docs.python.org/3/extending/extending.html#the-module-s-method-table-and-initialization-function)
+- [Python 3 documentation - Isolating Extension Modules](https://docs.python.org/3/howto/isolating-extensions.html)
+
+References
+
+- [python/cpython - Modules/itertoolsmodule.c](https://github.com/python/cpython/blob/main/Modules/itertoolsmodule.c)
+- [python/cpython - Modules/xxlimited.c](https://github.com/python/cpython/blob/main/Modules/xxlimited.c)
 
 ## Roadmap
 
 - [x] Deploy
 - [x] References
-- [ ] Update extension C source
+- [x] Update extension C source
 - [ ] Web interface
 - [x] Ballin
 
 ## License (MIT)
 
-Copyright (c) 2025 Sebastian Gössl
+Copyright (c) 2025-2026 Sebastian Gössl
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

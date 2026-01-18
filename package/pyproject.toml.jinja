@@ -17,8 +17,6 @@ authors = [
   {name="{{user_name}}", email="{{user_email}}"}
 ]
 dependencies = [
-  "operationcounter @ git+https://github.com/goessl/operationcounter.git",
-  "numpy"
 ]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
@@ -44,13 +42,11 @@ Repository = "https://github.com/{{github_user}}/{{_folder_name}}.git"
 test = ["pytest"]
 
 [tool.hatch.build.targets.wheel]
-include = ["{{_folder_name}}.py", "LICENSE", "README.md"]
+include = ["{{_folder_name}}", "LICENSE", "README.md"]
 
 [tool.hatch.build.targets.sdist]{% if mkdocs %}
-include = ["{{_folder_name}}.py", "test_{{_folder_name}}.py",
-  "mkdocs.yml", "index.md", "mathjax.js",
-  "pyproject.toml", "README.md", "LICENSE"]
-{% else %}
-include = ["{{_folder_name}}.py", "test_{{_folder_name}}.py",
-  "pyproject.toml", "README.md", "LICENSE"]
-{% endif %}
+include = ["{{_folder_name}}", "tests",
+  "mkdocs.yml", "docs",
+  "pyproject.toml", "README.md", "LICENSE"]{% else %}
+include = ["{{_folder_name}}", "tests",
+  "pyproject.toml", "README.md", "LICENSE"]{% endif %}

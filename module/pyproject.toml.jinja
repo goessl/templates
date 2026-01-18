@@ -17,8 +17,6 @@ authors = [
   {name="{{user_name}}", email="{{user_email}}"}
 ]
 dependencies = [
-  "operationcounter @ git+https://github.com/goessl/operationcounter.git",
-  "numpy"
 ]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
@@ -49,8 +47,6 @@ include = ["{{_folder_name}}.py", "LICENSE", "README.md"]
 [tool.hatch.build.targets.sdist]{% if mkdocs %}
 include = ["{{_folder_name}}.py", "test_{{_folder_name}}.py",
   "mkdocs.yml", "index.md", "mathjax.js",
-  "pyproject.toml", "README.md", "LICENSE"]
-{% else %}
+  "pyproject.toml", "README.md", "LICENSE"]{% else %}
 include = ["{{_folder_name}}.py", "test_{{_folder_name}}.py",
-  "pyproject.toml", "README.md", "LICENSE"]
-{% endif %}
+  "pyproject.toml", "README.md", "LICENSE"]{% endif %}
