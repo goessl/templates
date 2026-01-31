@@ -3,7 +3,7 @@ try:
 except ImportError as e:
     import warnings
     warnings.warn(
-        "C extension _{{_folder_name}} not available. Falling back to pure Python implementation py{{_folder_name}} (slower): " + str(e),
+        "C extension _{{_folder_name}} not available. Falling back to pure Python implementation _py{{_folder_name}} (slower): " + str(e),
         ImportWarning,
         stacklevel = 2
     )

@@ -1,10 +1,7 @@
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
-{% if direct_dependencies %}
-[tool.hatch.metadata]
-allow-direct-references = true
-{% endif %}
+
 [project]
 name = "{{_folder_name}}"
 version = "0.9"
@@ -16,22 +13,7 @@ license-files = ["LICEN[CS]E*"]
 authors = [
   {name="{{user_name}}", email="{{user_email}}"}
 ]
-dependencies = [
-]
-classifiers = [
-  "Development Status :: 5 - Production/Stable",
-  "Intended Audience :: Science/Research",
-  "Operating System :: OS Independent",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: 3.13",
-  "Programming Language :: Python :: 3.14",
-  "Topic :: Scientific/Engineering",
-  "Topic :: Scientific/Engineering :: Mathematics",
-  "Topic :: Scientific/Engineering :: Physics"
-]
+#dependencies = []
 
 [project.urls]
 Homepage = "https://github.com/{{github_user}}/{{_folder_name}}"{% if mkdocs %}
@@ -42,11 +24,8 @@ Repository = "https://github.com/{{github_user}}/{{_folder_name}}.git"
 test = ["pytest"]
 
 [tool.hatch.build.targets.wheel]
-include = ["{{_folder_name}}", "LICENSE", "README.md"]
-
-[tool.hatch.build.targets.sdist]{% if mkdocs %}
-include = ["{{_folder_name}}", "tests",
-  "mkdocs.yml", "docs",
-  "pyproject.toml", "README.md", "LICENSE"]{% else %}
-include = ["{{_folder_name}}", "tests",
-  "pyproject.toml", "README.md", "LICENSE"]{% endif %}
+packages = ["{{_folder_name}}"]
+include = [
+  "README.md",
+  "LICENSE"
+]

@@ -40,11 +40,13 @@ And then follow the appearing quastionnaire. Done!
 filtered and more ordered like [Python Packaging User Guide - pyproject.toml specification](https://packaging.python.org/en/latest/specifications/pyproject-toml/).
 For extensions/setuptools [setuptools documentation - Configuring setuptools using pyproject.toml files](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html).
 
+License specification acc. to [PEP 639](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license-and-license-files).
+
 ### `mkdocs.yml`
 
 Derived from [squidfunk/mkdocs-material - mkdocs.yml](https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml).
 
-### `LICENSE.txt`
+### `LICENSE`
 
 [Choose a License - MIT License](https://choosealicense.com/licenses/mit/)
 

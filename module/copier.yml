@@ -22,17 +22,12 @@ user_email:
     default: goessl@student.tugraz.at
     help: What is your email address?
 
-mkdocs:
-    type: bool
-    default: yes
-    help: Use MkDocs documentation?
-
 year:
     type: str
     default: 2026
     help: What year do we currently have?
 
-direct_dependencies:
+mkdocs:
     type: bool
-    default: no
-    help: Does your module have direct dependencies (GitHub link)?
+    default: yes
+    help: Use MkDocs documentation?

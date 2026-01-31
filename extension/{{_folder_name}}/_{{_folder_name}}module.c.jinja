@@ -134,7 +134,7 @@ static PyType_Slot Ooo_Type_slots[] = {
 
 //https://docs.python.org/3/c-api/type.html#c.PyType_Spec
 static PyType_Spec Ooo_spec = {
-    .name = "_{{_folder_name}}.Ooo",
+    .name = "{{_folder_name}}._{{_folder_name}}.Ooo",
     .basicsize = sizeof(OooObject),
     //.itemsize = 0,
     .flags = Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_HAVE_GC | Py_TPFLAGS_DEFAULT,
@@ -220,7 +220,7 @@ static void
 //datetime: https://github.com/python/cpython/blob/63cc1257db468a368d64c0b968d203a0f4c7303a/Modules/_datetimemodule.c#L7678
 static PyModuleDef {{_folder_name}}module = {
     .m_base = PyModuleDef_HEAD_INIT,
-    .m_name = "_{{_folder_name}}",
+    .m_name = "{{_folder_name}}._{{_folder_name}}",
     .m_doc  = {{_folder_name}}_doc,
     .m_size = sizeof({{_folder_name}}_state),
     .m_methods = {{_folder_name}}_methods,
