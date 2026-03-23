@@ -24,7 +24,7 @@ user_email:
 
 year:
     type: str
-    default: 2026
+    default: "{% now 'utc', '%Y' %}"
     help: What year do we currently have?
 
 mkdocs:

@@ -1,145 +1,6 @@
+#define Py_LIMITED_API 0x030e0000
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
-#include <structmember.h>
-
-
-
-typedef struct {
-    PyTypeObject* Ooo_type;
-} {{_folder_name}}_state;
-
-
-
-
-/* Class */
-
-//class Ooo:
-//    def __init(self, a, b):
-//        self.a, self.b = a, b
-
-typedef struct {
-    PyObject_HEAD
-    PyObject* a;
-    PyObject* b;
-} OooObject;
-
-#define OooObject_CAST(op)  ((OooObject*)(op))
-// TODO: full support for type-checking was added in 3.14 (Py_tp_token)
-// #define Ooo_Check(v)      Py_IS_TYPE(v, Ooo_Type)
-
-PyDoc_STRVAR(Ooo_doc, "Ooo. C implementation.");
-
-static int
-Ooo_traverse(PyObject* op, visitproc visit, void* arg)
-{
-    OooObject* self = OooObject_CAST(op);
-    Py_VISIT(Py_TYPE(self));
-    Py_VISIT(self->a);
-    Py_VISIT(self->b);
-    return 0;
-}
-
-static int
-Ooo_clear(PyObject* op)
-{
-    OooObject* self = OooObject_CAST(op);
-    Py_CLEAR(self->a);
-    Py_CLEAR(self->b);
-    return 0;
-}
-
-static void
-Ooo_dealloc(PyObject* op)
-{
-    OooObject* self = OooObject_CAST(op);
-    PyTypeObject* tp = Py_TYPE(self);
-    PyObject_GC_UnTrack(self);
-    (void)Ooo_clear(self);
-    tp->tp_free(self);
-    Py_DECREF(tp);
-}
-
-//https://docs.python.org/3/c-api/structures.html#c.PyMemberDef
-static PyMemberDef Ooo_members[] = {
-    {"a", Py_T_OBJECT_EX, offsetof(OooObject, a), 0, NULL},
-    {"b", Py_T_OBJECT_EX, offsetof(OooObject, b), 0, NULL},
-    {NULL}  /* sentinel */
-};
-
-static int
-Ooo_init(PyObject* op, PyObject* args, PyObject* kwds)
-{
-    OooObject* self = OooObject_CAST(op);
-    PyObject* a = NULL;
-    PyObject* b = NULL;
-    static const char* kwlist[] = {"a", "b", NULL};
-    if(!PyArg_ParseTupleAndKeywords(args, kwds, "OO", kwlist, &a, &b)) {
-        return -1;
-    }
-    Py_XSETREF(self->a, Py_NewRef(a));
-    Py_XSETREF(self->b, Py_NewRef(b));
-    
-    return 0;
-}
-
-static PyObject*
-Ooo_new(PyTypeObject* type, PyObject* args, PyObject* kwds)
-{
-    OooObject* self = OooObject_CAST(type->tp_alloc(type, 0));
-    if(self != NULL) {
-        self->a = NULL;
-        self->b = NULL;
-    }
-    return (PyObject*)self;
-}
-
-//https://docs.python.org/3/c-api/typeobj.html
-static PyType_Slot Ooo_Type_slots[] = {
-    {Py_tp_dealloc, Ooo_dealloc},
-    //{Py_tp_repr, Ooo_repr},
-    //{Py_tp_hash, Ooo_hash},
-    //{Py_tp_call, Ooo_call},
-    //{Py_tp_str, Ooo_str},
-    //{Py_tp_getattro, Ooo_getattro},
-    //{Py_tp_setattro, Ooo_setattro},
-    {Py_tp_doc, Ooo_doc},
-    {Py_tp_traverse, Ooo_traverse},
-    {Py_tp_clear, Ooo_clear},
-    //{Py_tp_richcompare, Ooo_richcompare},
-    //{Py_tp_iter, Ooo_iter},
-    //{Py_tp_iternext, Ooo_iternext},
-    //{Py_tp_methods, Ooo_methods},
-    {Py_tp_members, Ooo_members},
-    //{Py_tp_getset, Ooo_getset},
-    //{Py_tp_base, Ooo_base},
-    //{Py_tp_descr_get, Ooo_descr_get},
-    //{Py_tp_descr_set, Ooo_descr_set},
-    {Py_tp_init, Ooo_init},
-    //{Py_tp_alloc, Ooo_alloc}, PyType_GenericAlloc
-    {Py_tp_new, Ooo_new},
-    //{Py_tp_free, Ooo_free}, don't touch https://docs.python.org/3/howto/isolating-extensions.html#not-overriding-tp-free
-    //{Py_tp_is_gc, Ooo_is_gc},
-    //{Py_tp_bases, Ooo_bases},
-    //{Py_tp_finalize, Ooo_finalize},
-    //{Py_tp_vectorcall, Ooo_vectorcall},
-    /* DEPRECATED */
-    //{Py_tp_getattr, Ooo_getattr},
-    //{Py_tp_setattr, Ooo_setattr},
-    //{Py_tp_del, Ooo_del},
-    
-    //number, ...
-    
-    {0, 0} /* sentinel */
-};
-
-//https://docs.python.org/3/c-api/type.html#c.PyType_Spec
-static PyType_Spec Ooo_spec = {
-    .name = "{{_folder_name}}._{{_folder_name}}.Ooo",
-    .basicsize = sizeof(OooObject),
-    //.itemsize = 0,
-    .flags = Py_TPFLAGS_HEAPTYPE | Py_TPFLAGS_HAVE_GC | Py_TPFLAGS_DEFAULT,
-    .slots = Ooo_Type_slots
-};
 
 
 
@@ -152,11 +13,11 @@ foo(PyObject* self, PyObject* args, PyObject* kwargs)
 {
     PyObject* a;
     PyObject* b;
-    static const char* kwlist[] = {"a", "b", NULL};
+    static const char* const kwlist[] = {"a", "b", NULL};
     if(!PyArg_ParseTupleAndKeywords(args, kwargs, "OO", kwlist, &a, &b)) {
         return NULL;
     }
-    
+
     return PyNumber_Add(a, b);
 }
 
@@ -168,66 +29,22 @@ PyDoc_STRVAR({{_folder_name}}_doc,
 "{{_folder_name}} C implementation.");
 
 static PyMethodDef {{_folder_name}}_methods[] = {
-    {"foo", foo, METH_VARARGS|METH_KEYWORDS, foo_doc},
+    {"foo", (PyCFunction)foo, METH_VARARGS | METH_KEYWORDS, foo_doc},
     {NULL, NULL, 0, NULL} //sentinel
 };
 
-static int
-{{_folder_name}}_exec(PyObject* module)
-{
-    {{_folder_name}}_state* state = PyModule_GetState(module);
-    
-    state->Ooo_type = PyType_FromModuleAndSpec(module, &Ooo_spec, NULL);
-    if(state->Ooo_type == NULL) {
-        return -1;
-    }
-    if(PyModule_AddType(module, state->Ooo_type) < 0) {
-        return -1;
-    }
-    
-    return 0;
-}
-
 static PyModuleDef_Slot {{_folder_name}}_slots[] = {
-    {Py_mod_exec, {{_folder_name}}_exec},
     {0, NULL}
 };
 
-static int
-{{_folder_name}}_traverse(PyObject* mod, visitproc visit, void* arg)
-{
-    {{_folder_name}}_state* state = ({{_folder_name}}_state*)PyModule_GetState(mod);
-    Py_VISIT(state->Ooo_type);
-    return 0;
-}
-
-static int
-{{_folder_name}}_clear(PyObject* mod)
-{
-    {{_folder_name}}_state* state = ({{_folder_name}}_state*)PyModule_GetState(mod);
-    Py_CLEAR(state->Ooo_type);
-    return 0;
-}
-
-static void
-{{_folder_name}}_free(void* mod)
-{
-    (void){{_folder_name}}_clear((PyObject*)mod);
-}
-
 //https://docs.python.org/3/c-api/module.html#c.PyModuleDef
-//itertools: https://github.com/python/cpython/blob/63cc1257db468a368d64c0b968d203a0f4c7303a/Modules/itertoolsmodule.c#L4093
-//datetime: https://github.com/python/cpython/blob/63cc1257db468a368d64c0b968d203a0f4c7303a/Modules/_datetimemodule.c#L7678
 static PyModuleDef {{_folder_name}}module = {
     .m_base = PyModuleDef_HEAD_INIT,
     .m_name = "{{_folder_name}}._{{_folder_name}}",
     .m_doc  = {{_folder_name}}_doc,
-    .m_size = sizeof({{_folder_name}}_state),
+    .m_size = 0,
     .m_methods = {{_folder_name}}_methods,
     .m_slots = {{_folder_name}}_slots,
-    .m_traverse = {{_folder_name}}_traverse,
-    .m_clear = {{_folder_name}}_clear,
-    .m_free = {{_folder_name}}_free
 };
 
 PyMODINIT_FUNC

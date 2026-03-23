@@ -7,7 +7,7 @@ name = "{{_folder_name}}"
 version = "0.9"
 description = "{{description}}"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.14"
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
 authors = [
@@ -22,10 +22,3 @@ Repository = "https://github.com/{{github_user}}/{{_folder_name}}.git"
 
 [project.optional-dependencies]
 test = ["pytest"]
-
-[tool.hatch.build.targets.wheel]
-packages = ["{{_folder_name}}"]
-include = [
-  "README.md",
-  "LICENSE"
-]
