@@ -13,7 +13,6 @@ license-files = ["LICEN[CS]E*"]
 authors = [
   {name="{{user_name}}", email="{{user_email}}"}
 ]
-#dependencies = []
 
 [project.urls]
 Homepage = "https://github.com/{{github_user}}/{{_folder_name}}"{% if mkdocs %}
@@ -22,9 +21,6 @@ Repository = "https://github.com/{{github_user}}/{{_folder_name}}.git"
 
 [project.optional-dependencies]
 test = ["pytest"]
-
-[tool.setuptools]
-packages = ["{{_folder_name}}"]
 
 [[tool.setuptools.ext-modules]]
 name = "{{_folder_name}}._{{_folder_name}}"

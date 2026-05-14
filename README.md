@@ -71,6 +71,7 @@ References
 - [x] Deploy
 - [x] References
 - [x] Update extension C source
+- [ ] Switch from [MkDocs](https://www.mkdocs.org/) to [Zensical](https://zensical.org/) because of [The Slow Collapse of MkDocs](https://fpgmaas.com/blog/collapse-of-mkdocs/).
 - [ ] Web interface
 - [x] Ballin
 
