@@ -1,10 +1,14 @@
 description:
     type: str
-    help: Describe your package?
+    help: Describe your package.
 
 module:
     type: str
     help: What is your module name?
+
+module_description:
+    type: str
+    help: Describe your module.
 
 user_name:
     type: str

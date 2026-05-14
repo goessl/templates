@@ -1,6 +1,6 @@
 description:
     type: str
-    help: Describe your extension?
+    help: Describe your extension.
 
 user_name:
     type: str

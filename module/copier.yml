@@ -1,6 +1,6 @@
 description:
     type: str
-    help: Describe your module?
+    help: Describe your module.
 
 user_name:
     type: str
