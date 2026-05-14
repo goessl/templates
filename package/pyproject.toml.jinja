@@ -13,7 +13,6 @@ license-files = ["LICEN[CS]E*"]
 authors = [
   {name="{{user_name}}", email="{{user_email}}"}
 ]
-#dependencies = []
 
 [project.urls]
 Homepage = "https://github.com/{{github_user}}/{{_folder_name}}"{% if mkdocs %}
@@ -22,7 +21,3 @@ Repository = "https://github.com/{{github_user}}/{{_folder_name}}.git"
 
 [project.optional-dependencies]
 test = ["pytest"]
-
-[tool.hatch.build.targets.wheel]
-packages = ["{{_folder_name}}"]
-include = ["README.md", "LICENSE"]
