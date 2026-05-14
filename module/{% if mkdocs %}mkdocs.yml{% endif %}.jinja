@@ -37,7 +37,6 @@ plugins:
           options:
             heading_level: 3
             members_order: source
-            show_root_toc_entry: false
             show_symbol_type_heading: true
             group_by_category: false
             docstring_style: numpy
@@ -53,10 +52,10 @@ extra:
       name: {{instagram_name}} on Instagram
 {% endif %}
 markdown_extensions:
-  - pymdownx.highlight
-  - pymdownx.superfences
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.highlight
+  - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
 
