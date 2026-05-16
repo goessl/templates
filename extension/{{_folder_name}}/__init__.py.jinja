@@ -7,11 +7,13 @@
 
 try:
     from ._{{_folder_name}} import *
-except ImportError as e:
+    _C_EXTENSION = True
+except ModuleNotFoundError as e:
     import warnings
     warnings.warn(
         "C extension _{{_folder_name}} not available. Falling back to pure Python implementation _py{{_folder_name}} (slower): " + str(e),
         ImportWarning,
-        stacklevel = 2
+        stacklevel = 1
     )
     from ._py{{_folder_name}} import *
+    _C_EXTENSION = False

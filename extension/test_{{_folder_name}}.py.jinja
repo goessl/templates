@@ -1,4 +1,19 @@
-from {{_folder_name}} import *
+import pytest
 
-def test_foo():
+from {{_folder_name}} import foo
+from {{_folder_name}}._py{{_folder_name}} import foo as py_foo
+try:
+    from {{_folder_name}}._{{_folder_name}} import foo as c_foo
+    has_c = True
+except ModuleNotFoundError:
+    has_c = False
+
+implementations = [
+    pytest.param(foo, id='default'),
+    pytest.param(py_foo, id='python'),
+    pytest.param(c_foo, id='c', marks=pytest.mark.skipif(not has_c, reason='C extension not built'))
+]
+
+@pytest.mark.parametrize('foo', implementations)
+def test_foo(foo):
     assert foo(2, 3) == 5
