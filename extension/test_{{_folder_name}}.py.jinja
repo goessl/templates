@@ -14,6 +14,6 @@ implementations = [
     pytest.param(c_foo, id='c', marks=pytest.mark.skipif(not has_c, reason='C extension not built'))
 ]
 
-@pytest.mark.parametrize('foo', implementations)
-def test_foo(foo):
-    assert foo(2, 3) == 5
+@pytest.mark.parametrize('func', implementations)
+def test_foo(func):
+    assert func(2, 3) == 5
