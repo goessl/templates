@@ -17,34 +17,102 @@ cd templates
 
 - For a **module** (single Python file package):
   ```console
-  python -m copier copy module YOUR_PROJECT_NAME
-  ```
-
-- For a **C extension**:
-  ```console
-  python -m copier copy extension YOUR_PROJECT_NAME
+  python -m copier copy module MODULE_NAME
   ```
 
 - For a **package**:
   ```console
-  python -m copier copy package YOUR_PROJECT_NAME
+  python -m copier copy package PACKAGE_NAME
+  ```
+
+- For a **C extension**:
+  ```console
+  python -m copier copy extension EXTENSION_NAME
   ```
 
 And then follow the appearing quastionnaire. Done!
 
 ## Design references
 
+```bash
+MODULE_NAME
+│   .gitignore                  Every repository needs this
+│   LICENSE                     and this
+│   README.md                   and that.
+│   
+│   pyproject.toml              Pythons necessary packaging metainformation.
+│   py.typed                    Enable typing.
+│   
+│   MODULE_NAME.py              Your actual code comes here.
+│   test_MODULE_NAME.py         Tests come here.
+│   
+│   mkdocs.yml                  Optional: MkDocs configuration.
+│   index.md                    Webpage.
+│   mathjax.js                  MathJax for math.
+
+PACKAGE_NAME
+│   .gitignore                  Every repository needs this
+│   LICENSE                     and this
+│   README.md                   and that.
+│   
+│   pyproject.toml              Pythons necessary packaging metainformation.
+│   
+├───PACKAGE_NAME
+│       __init__.py             Necessary package entry point.
+│       MODULE_NAME.py          Your actual code comes here.
+│       py.typed                Enable typing.
+│   
+├───tests
+│       test_MODULE_NAME.py     Tests come here.
+│   
+│   mkdocs.yml                  Optional: MkDocs configuration.
+├───docs
+│       index.md                Landing page.
+│       MODULE_NAME.md          Module documentation.
+│       mathjax.js              MathJax for math.
+
+[EXTENSION_NAME]
+│   .gitignore                  Every repository needs this
+│   LICENSE                     and this
+│   README.md                   and that.
+│   
+│   pyproject.toml              Pythons necessary packaging metainformation.
+│   
+├───EXTENSION_NAME
+│       __init__.py             Necessary package entry point.
+│       _pyEXTENSION_NAME.py    Python implementation comes here.
+│       _EXTENSION_NAMEmodule.c C implementation comes here.
+│       _EXTENSION_NAME.pyi     Typing stub.
+│       py.typed                Enable typing.
+│   
+│   test_EXTENSION_NAME.py      Tests come here.
+│   
+│   mkdocs.yml                  Optional: MkDocs configuration.
+│   index.md                    Webpage.
+│   mathjax.js                  MathJax for math.
+```
+
 ### `pyproject.toml`
 
+Filtered version of
+
 [Python Packaging User Guide - Writing your pyproject.toml](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#a-full-example)
-filtered and more ordered like [Python Packaging User Guide - pyproject.toml specification](https://packaging.python.org/en/latest/specifications/pyproject-toml/).
-For extensions/setuptools [setuptools documentation - Configuring setuptools using pyproject.toml files](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html).
+
+and more ordered like
+
+[Python Packaging User Guide - pyproject.toml specification](https://packaging.python.org/en/latest/specifications/pyproject-toml/).
+
+For extensions/setuptools used
+
+[setuptools documentation - Configuring setuptools using pyproject.toml files](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html).
 
 License specification acc. to [PEP 639](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license-and-license-files).
 
 ### `mkdocs.yml`
 
-Derived from [squidfunk/mkdocs-material - mkdocs.yml](https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml).
+Filtered version of
+
+[squidfunk/mkdocs-material - mkdocs.yml](https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml).
 
 ### `LICENSE`
 
@@ -53,18 +121,6 @@ Derived from [squidfunk/mkdocs-material - mkdocs.yml](https://github.com/squidfu
 ### `.gitignore`
 
 [github/gitignore - Python.gitignore](https://github.com/github/gitignore/blob/main/Python.gitignore)
-
-### `extension`
-
-Documentation
-
-- [Python 3 documentation - Extending Python with C or C++](https://docs.python.org/3/extending/extending.html#the-module-s-method-table-and-initialization-function)
-- [Python 3 documentation - Isolating Extension Modules](https://docs.python.org/3/howto/isolating-extensions.html)
-
-References
-
-- [python/cpython - Modules/itertoolsmodule.c](https://github.com/python/cpython/blob/main/Modules/itertoolsmodule.c)
-- [python/cpython - Modules/xxlimited.c](https://github.com/python/cpython/blob/main/Modules/xxlimited.c)
 
 ## Roadmap
 
