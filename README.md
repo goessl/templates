@@ -114,6 +114,12 @@ Filtered version of
 
 [squidfunk/mkdocs-material - mkdocs.yml](https://github.com/squidfunk/mkdocs-material/blob/master/mkdocs.yml).
 
+Automatically enabled features:
+
+- auto/bright/dark mode
+- mkdocstrings preconfigured
+- math, code highlighting, tasklists
+
 ### `LICENSE`
 
 [Choose a License - MIT License](https://choosealicense.com/licenses/mit/)
